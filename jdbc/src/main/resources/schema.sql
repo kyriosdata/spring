@@ -1,3 +1,5 @@
+drop table stock if EXISTS;
+
 create table stock (
   stock_id int,
   company_name varchar2(50),
