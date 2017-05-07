@@ -12,11 +12,13 @@ spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
 
 ## Passos
 - ```mvn spring-boot:run``` coloca a aplicação em execução
-- ```curl http://localhost:8080/stocks``` para retornar JSON de conjunto 
-de ações (stocks) registradas no SGBD H2. Observe que o 'schema.sql' faz
-as inserções.
-- Inicie o MongoDB ```mongod --dbpath <path-to-db>```
-- Na linha de comandos ```mongo```
+
+- ```mongod --dbpath <path-to-db>``` Inicia o MongoDB com o banco no diretório 
+indicado. Certifique-se de que o diretório existe.
+- ```mvn spring-boot:run``` Executa a aplicação.
+- ```curl http://localhost:8080/users``` para retornar JSON 
+correspondente a um usuário inserido e na sequência recuperado.
+- ```mongo``` Execute o cliente para linha de comandos.
   - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
 
 
