@@ -16,6 +16,6 @@ spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
 de ações (stocks) registradas no SGBD H2. Observe que o 'schema.sql' faz
 as inserções.
 - Na linha de comandos ```mongo```
- - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
+  - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
 
 
