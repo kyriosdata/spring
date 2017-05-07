@@ -28,7 +28,9 @@ public class SpringBootDataApplication {
      * Requisita armazenamento de uma instância criada a cada requisição.
      * Chave gerada via Random class.
      *
-     * @return
+     * @return <code>true</code> para indicar que operação foi
+	 * executada de forma satisfatória, ou <code>false</code>,
+	 * caso contrário.
      */
 	@RequestMapping("/create")
 	public String create() {
