@@ -11,8 +11,6 @@ spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
 ```
 
 ## Passos
-- ```mvn spring-boot:run``` coloca a aplicação em execução
-
 - ```mongod --dbpath <path-to-db>``` Inicia o MongoDB com o banco no diretório 
 indicado. Certifique-se de que o diretório existe.
 - ```mvn spring-boot:run``` Executa a aplicação.
