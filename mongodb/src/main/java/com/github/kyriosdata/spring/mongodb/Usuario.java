@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Created by kyriosdata on 5/7/17.
+ * Classe que representa um documento a ser armazenado.
  */
 @Document
 public class Usuario {
