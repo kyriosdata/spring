@@ -30,6 +30,7 @@ conexão com o MongoDB.
 correspondente a um usuário inserido e na sequência recuperado. Por 
 exemplo ```{"id": 123, "nome":"fábio"}```.
 - ```mongo``` Execute o cliente para linha de comandos.
-  - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
+  - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'. Após a execução
+  do comando anterior, pelo menos um documento deve ser recuperado.
 
 
