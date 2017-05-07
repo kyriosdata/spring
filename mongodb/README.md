@@ -1,9 +1,14 @@
-# jdbc
-Ilustra JdbcTemplate e H2 por meio do Spring Framework
+# mongodb
+Ilustra Spring Boot Data (MongoDB)
 
 ## Informações
-- Configuração no arquivo 'application.properties'
-- Esquema empregado quando SGBD instanciado é 'schema.sql'
+O arquivo 'application.properties', exibido abaixo, identifica a URI a
+ser empregada para a conexão com o MongoDB. Nesse caso, deve estar em execução
+no computador local. O banco é 'test' e o usuário 'usurio' com a senha 'senha'.
+
+```
+spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
+```
 
 ## Passos
 - ```mvn spring-boot:run``` coloca a aplicação em execução
