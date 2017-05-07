@@ -15,6 +15,7 @@ spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
 - ```curl http://localhost:8080/stocks``` para retornar JSON de conjunto 
 de ações (stocks) registradas no SGBD H2. Observe que o 'schema.sql' faz
 as inserções.
-- ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
+- Na linha de comandos ```mongo```
+ - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
 
 
