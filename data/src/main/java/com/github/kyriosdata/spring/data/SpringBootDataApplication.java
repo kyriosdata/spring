@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2017
+ *
+ * Fábio Nogueira de Lucena
+ * Fábrica de Software - Instituto de Informática (UFG)
+ *
+ * Creative Commons Attribution 4.0 International License.
+ */
+
 package com.github.kyriosdata.spring.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +24,12 @@ public class SpringBootDataApplication {
 	@Autowired
 	UsuarioRepository repo;
 
+    /**
+     * Requisita armazenamento de uma instância criada a cada requisição.
+     * Chave gerada via Random class.
+     *
+     * @return
+     */
 	@RequestMapping("/create")
 	public String create() {
         Usuario usr = new Usuario();
