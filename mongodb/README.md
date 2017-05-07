@@ -25,7 +25,8 @@ conexão com o MongoDB.
        indicado.
 - ```mvn spring-boot:run``` Executa a aplicação.
 - ```curl http://localhost:8080/users``` para retornar JSON 
-correspondente a um usuário inserido e na sequência recuperado.
+correspondente a um usuário inserido e na sequência recuperado. Por 
+exemplo ```{"id": 123, "nome":"fábio"}```.
 - ```mongo``` Execute o cliente para linha de comandos.
   - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'.
 
