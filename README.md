@@ -2,4 +2,5 @@
 Ilustra uso do Spring Framework
 
 # Exemplos
-- [JdbcTemplate](jdbc)
+- [data](data). Uso de JPA e H2. 
+- [Jdbc](jdbc). Como usar JdbcTemplate com H2.
