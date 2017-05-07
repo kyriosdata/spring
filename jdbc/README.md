@@ -7,8 +7,9 @@ Ilustra JdbcTemplate e H2 por meio do Spring Framework
 
 ## Passos
 - ```mvn spring-boot:run``` coloca a aplicação em execução
-- Execute 'curl http://localhost:8080/stocks' para retornar conjunto 
-de ações (stocks) registradas no SGBD H2.
-- Browse 'http://localhost:8080/h2'. Ao optar por conectar, você terá 
-acesso ao banco de dados criado pelo esquema e poderá executar sentenças SQL.
+- ```curl http://localhost:8080/stocks``` para retornar JSON de conjunto 
+de ações (stocks) registradas no SGBD H2. Observe que o 'schema.sql' faz
+as inserções.
+- ```http://localhost:8080/h2``` oferece acesso ao H2. A URL para acesso ao banco
+usado pela aplicação deve ser a mesma daquela contida em 'application.properties'.
 
