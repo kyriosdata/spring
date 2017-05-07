@@ -18,11 +18,13 @@ o comando não seja executado no mesmo diretório que o ```mkdir```.
 - ```mongo``` Execute o cliente para linha de comandos. Será necessário criar
 o usuário 'usuario' com a senha 'senha', conforme a URI fornecida acima para 
 conexão com o MongoDB.
-- ```use test``` seleciona o banco 'test'.
+  - ```use test``` seleciona o banco 'test'.
 
-- ```db.createUser({ user: "usuario", pwd: "senha", roles: [ "readWrite"] })```
+  - ```db.createUser({ user: "usuario", pwd: "senha", roles: [ "readWrite"] })```
   Seleciona o banco 'test' (default) e para o mesmo, cria o usuário
        indicado.
+  - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'. Possivelmente
+  nenhum será exibido nesse instante.
 - ```mvn spring-boot:run``` Executa a aplicação.
 - ```curl http://localhost:8080/users``` para retornar JSON 
 correspondente a um usuário inserido e na sequência recuperado. Por 
