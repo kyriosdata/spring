@@ -35,6 +35,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>1.4.192</version>
         </dependency>
 
     </dependencies>
@@ -50,14 +51,35 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.2.0</version>
                 <configuration>
-                    <url>jdbc:h2:file:./database</url>
+                    <url>jdbc:h2:tcp://localhost:9092/~/database</url>
                     <user>sa</user>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>1.4.195</version>
+                        <version>1.4.192</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- start/stop H2 DB as a server -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>org.h2.tools.Server</mainClass>
+                    <arguments>
+                        <argument>-tcp</argument>
+                        <argument>-tcpAllowOthers</argument>
+                    </arguments>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.192</version>
                     </dependency>
                 </dependencies>
             </plugin>
