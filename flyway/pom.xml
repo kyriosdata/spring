@@ -32,6 +32,9 @@
             <artifactId>flyway-core</artifactId>
         </dependency>
 
+        <!-- Versão deve ser a mesma do Flyway e do Cliente -->
+        <!-- Versões usadas pelo Flyway indicada abaixo     -->
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -42,10 +45,15 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- Flyway plugin -->
+            <!-- Versão do H2 driver (DEVE SER A MESMA DO SERVIDOR) -->
+
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
@@ -63,7 +71,9 @@
                 </dependencies>
             </plugin>
 
-            <!-- start/stop H2 DB as a server -->
+            <!-- Iniciar o H2 (Server mode) -->
+            <!-- Versão utilizada deve ser a mesma empregada pelo cliente -->
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>

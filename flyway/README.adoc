@@ -2,10 +2,11 @@
 = Flyway
 
 == Introdução
-Ilustra como realizar update (migração) de dados usando o Spring e o
-Flyway.
+Ilustra uso combinado de Flyway, H2 e Spring.
 
 == Passos
+
+
 
 ```
 $ mvn clean package
