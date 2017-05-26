@@ -4,9 +4,17 @@
 == Introdução
 Ilustra uso combinado de Flyway, H2 e Spring.
 
+== Pré-requisitos
+Configure o driver do H2 a ser empregado pelo seu IDE usando a versão
+correta, ou seja, a mesma versão a ser empregada pelo Spring e pelo
+Flyway.
+
+O arquivo ```pom.xml``` faz uso do **spring-boot-starter-parent** e,
+nesse caso, a versão utilizada é indicada pelo **h2.version**. No
+Intellij basta clicar no arquivo pom com o botão direito, Maven e, por
+fim, Show Effective Pom.
+
 == Passos
-
-
 
 ```
 $ mvn clean package

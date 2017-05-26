@@ -14,7 +14,6 @@
         <version>2.0.0.M1</version>
     </parent>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -51,7 +50,7 @@
             </plugin>
 
             <!-- Flyway plugin -->
-            <!-- Versão do H2 driver (DEVE SER A MESMA DO SERVIDOR) -->
+            <!-- Versão do H2 (mesma do Spring Boot) -->
 
             <plugin>
                 <groupId>org.flywaydb</groupId>
@@ -65,7 +64,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>1.4.192</version>
+                        <version>${h2.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -88,7 +87,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>1.4.192</version>
+                        <version>${h2.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
