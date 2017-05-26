@@ -1,0 +1,18 @@
+:compat-mode:
+= Flyway
+
+== Introdução
+Ilustra como realizar update (migração) de dados usando o Spring e o
+Flyway.
+
+== Passos
+
+```
+$ mvn clean package
+$ java -jar target/spring-flyway-1.0.0.jar
+```
+
+== Explanação
+Ilustra como uma coluna pode ser adicionada ao banco de dados.
+
+O diretório `src/main/db/migration` contém detalhes da migração.
