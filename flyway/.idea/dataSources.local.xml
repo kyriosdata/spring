@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="H2 LOCAL" uuid="7c65e75f-3d08-42d2-ace4-12cfa9f23b38">
+    <data-source name="H2 1.4.195 - LOCAL" uuid="f10b6ce6-1fb4-4d0a-865f-074536508770">
       <database-info product="H2" version="1.4.195 (2017-04-23)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.4.195 (2017-04-23)">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
