@@ -26,10 +26,10 @@ Basta executar ```mvn exec:java```.
 
 == Passos
 
-```
+'''
 $ mvn clean package
 $ java -jar target/spring-flyway-1.0.0.jar
-```
+'''
 
 == Explanação
 Ilustra como uma coluna pode ser adicionada ao banco de dados.
