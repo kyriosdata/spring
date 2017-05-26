@@ -14,6 +14,9 @@ nesse caso, a versão utilizada é indicada pelo **h2.version**. No
 Intellij basta clicar no arquivo pom com o botão direito, Maven e, por
 fim, Show Effective Pom.
 
+== Iniciar o H2 (Server Mode)
+Basta executar ```mvn exec:java```.
+
 == Passos
 
 ```
