@@ -7,7 +7,7 @@ Ilustra uso combinado de Flyway, H2 e Spring.
 == Importante
 Configure o driver do H2 a ser empregado pelo seu IDE usando a versão
 correta. O que isso significa? Significa usar a versão que também
-´e empregada pelo Spring e pelo Flyway.
+é empregada pelo Spring e pelo Flyway.
 
 O arquivo _pom.xml_ faz uso do **spring-boot-starter-parent** e,
 nesse caso, a versão utilizada é indicada pela propriedade
@@ -33,7 +33,11 @@ $ mvn clean package
 $ java -jar target/spring-flyway-1.0.0.jar
 '''
 
-== Explanação
-Ilustra como uma coluna pode ser adicionada ao banco de dados.
+== Migração (refatoração)
+O diretório `src/main/db/migration` contém várias versões **V1**, 
+**V2** e assim sucessivamente. 
 
-O diretório `src/main/db/migration` contém detalhes da migração.
+Todas elas serão aplicadas, na ordem das versões, com o comando
+**mvn flyway:migrate**. Use o comando **mvnflyway:info** para obter
+informações sobre o banco de dados em questão, o que deve indicar
+eventuais alterações pendentes, se for o caso.
