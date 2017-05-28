@@ -12,11 +12,14 @@ package com.github.kyriosdata.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Ilustra classe contendo a definição de "beans".
+ */
 @Configuration
-public class DemoConfiguracao {
+public class SegundoConfiguracao {
 
     @Bean
-    public String configuracao() {
-        return "configuracao from Configuracao.class";
+    public String segundo() {
+        return "segundo";
     }
 }

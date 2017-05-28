@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2017
+ *
+ * Fábio Nogueira de Lucena
+ * Fábrica de Software - Instituto de Informática (UFG)
+ *
+ * Creative Commons Attribution 4.0 International License.
+ */
+
 package com.github.kyriosdata.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +26,54 @@ public class BeansApplication {
 
 	/**
 	 * Obtenha o valor dessa propriedade por meio do
-	 * bean identificado por "beans".
+	 * bean identificado por "beans". Ou seja, a
+	 * configuração é fornecida nessa própria classe.
 	 */
 	@Autowired
 	@Resource(name = "beans")
 	private List<String> beans;
 
+	/**
+	 * Obtém valor configurado externamente, na
+	 * classe SegundoConfiguracao.
+	 */
 	@Autowired
-	@Resource(name = "configuracao")
+	@Resource(name = "segundo")
 	private String configuracao;
 
 	/**
+	 * Obtém valor configurado externamente, na classe
+	 * TerceiroConfiguracao. Não é necessário uso de
+	 * \@Resource, como no exemplo acima, pois o nome
+	 * do campo é também o identificador do bean.
+	 */
+	@Autowired
+	private String terceiro;
+
+	/**
 	 * Define um bean identificado por "beans".
+	 * Observe que o valor retornado é mantido em "cache".
 	 *
 	 * @return Lista de nomes.
 	 */
 	@Bean
 	public List<String> beans() {
-		return Arrays.asList("primeiro", "segundo", configuracao);
+		return Arrays.asList("primeiro");
 	}
 
-	@RequestMapping("/")
+	@RequestMapping("/1")
 	public String listaConfiguracaoDeBeans() {
 		return String.join(", ", beans);
+	}
+
+	@RequestMapping("/2")
+	public String arquivoConfiguracao() {
+		return configuracao;
+	}
+
+	@RequestMapping("/3")
+	public String terceiroConfiguracao() {
+		return terceiro;
 	}
 
 	public static void main(String[] args) {
