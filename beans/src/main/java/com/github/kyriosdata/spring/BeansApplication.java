@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,7 @@ import java.util.List;
 
 @RestController
 @SpringBootApplication
+@ImportResource("/configuracao-arquivo.xml")
 public class BeansApplication {
 
 	/**
@@ -51,6 +53,15 @@ public class BeansApplication {
 	private String terceiro;
 
 	/**
+	 * Configurado por meio de documento (arquivo) XML.
+	 * Veja configuração em "configuracao-arquivo.xml" e
+	 * como esse arquivo foi informado por meio da anotação
+	 * \@ImportResource.
+	 */
+	@Autowired
+	private String quarto;
+
+	/**
 	 * Define um bean identificado por "beans".
 	 * Observe que o valor retornado é mantido em "cache".
 	 *
@@ -74,6 +85,11 @@ public class BeansApplication {
 	@RequestMapping("/3")
 	public String terceiroConfiguracao() {
 		return terceiro;
+	}
+
+	@RequestMapping("/4")
+	public String fromConfigXmlFile() {
+		return quarto;
 	}
 
 	public static void main(String[] args) {
