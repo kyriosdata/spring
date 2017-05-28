@@ -23,6 +23,10 @@ public class BeansApplication {
 	@Resource(name = "beans")
 	private List<String> beans;
 
+	@Autowired
+	@Resource(name = "configuracao")
+	private String configuracao;
+
 	/**
 	 * Define um bean identificado por "beans".
 	 *
@@ -30,7 +34,7 @@ public class BeansApplication {
 	 */
 	@Bean
 	public List<String> beans() {
-		return Arrays.asList("primeiro", "segundo");
+		return Arrays.asList("primeiro", "segundo", configuracao);
 	}
 
 	@RequestMapping("/")
