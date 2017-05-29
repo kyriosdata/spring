@@ -48,4 +48,13 @@ public class Usuario {
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", empresa='" + empresa + '\'' +
+                '}';
+    }
 }

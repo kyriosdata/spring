@@ -42,6 +42,19 @@ public class SpringBootDataApplication {
         return Boolean.toString(retorno != null);
 	}
 
+	/**
+	 * Exibe a lista de usuários disponíveis no banco.
+	 *
+	 * @return Serialização (String) dos usuários disponíveis.
+	 */
+	@RequestMapping("/show")
+	public String showAll() {
+		StringBuilder sb = new StringBuilder();
+		repo.findAll().forEach(sb::append);
+
+		return sb.toString();
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDataApplication.class, args);
 	}
