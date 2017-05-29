@@ -4,7 +4,7 @@ Ilustra Spring Boot Data (MongoDB)
 ## Informações
 O arquivo 'application.properties', exibido abaixo, identifica a URI a
 ser empregada para a conexão com o MongoDB. Nesse caso, deve estar em execução
-no computador local. O banco é 'test' e o usuário 'usurio' com a senha 'senha'.
+no computador local. O banco é 'test' e o usuário 'usuario' com a senha 'senha'.
 
 ```
 spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
@@ -19,10 +19,9 @@ o comando não seja executado no mesmo diretório que o ```mkdir```.
 o usuário 'usuario' com a senha 'senha', conforme a URI fornecida acima para 
 conexão com o MongoDB.
   - ```use test``` seleciona o banco 'test'.
-
   - ```db.createUser({ user: "usuario", pwd: "senha", roles: [ "readWrite"] })```
-  Seleciona o banco 'test' (default) e para o mesmo, cria o usuário
-       indicado.
+  Para o banco 'test' (selecionado pelo comando acima), cria o usuário com 
+  a devida permissão para viabilizar o uso da URL de conexão (fornecida no início desse documento).
   - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'. Possivelmente
   nenhum será exibido nesse instante.
 - ```mvn spring-boot:run``` Executa a aplicação.
