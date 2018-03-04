@@ -15,7 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 @RestController
@@ -26,7 +28,7 @@ public class SpringBootDataApplication {
 
     /**
      * Requisita armazenamento de uma instância criada a cada requisição.
-     * Chave gerada via Random class.
+     * Chave gerada arbitrariamente.
      *
      * @return <code>true</code> para indicar que operação foi
 	 * executada de forma satisfatória, ou <code>false</code>,
@@ -43,15 +45,27 @@ public class SpringBootDataApplication {
 	}
 
 	/**
-	 * Exibe a lista de usuários disponíveis no banco.
+	 * Exibe a lista de identificadores de usuários disponíveis no banco.
+	 *
+	 * @return Serialização (String) dos usuários disponíveis.
+	 */
+	@RequestMapping("/ids")
+	public String showIds() {
+		StringBuilder sb = new StringBuilder();
+		List<Integer> ids = repo.findAll().stream().map(u -> u.getId()).collect(Collectors.toList());
+		ids.forEach(i -> sb.append(i + "\n"));
+		return sb.toString();
+	}
+
+	/**
+	 * Exibe a lista de usuários.
 	 *
 	 * @return Serialização (String) dos usuários disponíveis.
 	 */
 	@RequestMapping("/show")
 	public String showAll() {
 		StringBuilder sb = new StringBuilder();
-		repo.findAll().forEach(sb::append);
-
+		repo.findAll().forEach(u -> sb.append(u + "\n"));
 		return sb.toString();
 	}
 
