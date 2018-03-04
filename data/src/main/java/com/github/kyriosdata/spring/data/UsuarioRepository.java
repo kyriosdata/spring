@@ -12,8 +12,8 @@ package com.github.kyriosdata.spring.data;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Interface para a classe Usuario. Deve ser definida
- * uma para cada uma das entidades criadas.
+ * Interface para a classe {@link Usuario}. Deve ser definida
+ * uma interface como esta para cada uma das entidades criadas.
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 }

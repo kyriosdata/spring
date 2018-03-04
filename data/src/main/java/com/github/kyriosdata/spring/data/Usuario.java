@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Classe Usuario.
+ * Informações sobre um usuário do sistema.
  */
 @Entity
 public class Usuario {
