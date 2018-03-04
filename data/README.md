@@ -2,13 +2,11 @@
 Ilustra uso de JPA com auxílio do Spring Framework
 
 ## Informações
-O arquivo 'application.properties' é fornecido transcrito abaixo.
+O arquivo 'application.properties' é transcrito abaixo.
 
 ```
 spring.jpa.hibernate.ddl-auto=create-drop
-
 spring.datasource.url=jdbc:h2:mem:test
-
 spring.h2.console.enabled=true
 spring.h2.console.path=/h2
 
@@ -25,6 +23,8 @@ estiver em execução.
 - ```mvn spring-boot:run``` coloca a aplicação em execução
 - ```curl http://localhost:8080/create``` para criar uma entrada na tabela
 USUARIOS (chave é um valor gerado aleatoriamente).
-- ```http://localhost:8080/h2``` oferece acesso ao H2. A URL para acesso ao banco
-usado pela aplicação deve ser a mesma daquela contida em 'application.properties'.
+- ```http://localhost:8080/h2``` oferece acesso ao H2 enquanto o aplicativo estiver em execução. 
+A URL para acesso ao banco
+usado pela aplicação deve ser a mesma daquela contida em 'application.properties', 
+fornecido acima.
 
