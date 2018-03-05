@@ -2,13 +2,9 @@
 Ilustra Spring Boot Data (MongoDB)
 
 ## Informações
-O arquivo 'application.properties', exibido abaixo, identifica a URI a
-ser empregada para a conexão com o MongoDB. Nesse caso, deve estar em execução
-no computador local. O banco é 'test' e o usuário 'usuario' com a senha 'senha'.
-
-```
-spring.data.mongodb.uri=mongodb://usuario:senha@localhost/test
-```
+As informações para conexão com o MongoDB são fornecidas pelo arquivo 
+'[application.properties](src/main/resources/application.properties)'. 
+Consulte este arquivo para detalhes.
 
 ## Passos
 - ```mkdir db``` Cria diretório 'db' a ser utilizado pelo MongoDB.
