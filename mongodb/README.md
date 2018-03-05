@@ -27,5 +27,14 @@ exemplo ```{"id": 123, "nome":"fábio"}```.
 - ```mongo``` Execute o cliente para linha de comandos.
   - ```db.usuario.find({})``` Lista todos os documentos na coleção 'usuario'. Após a execução
   do comando anterior, pelo menos um documento deve ser recuperado.
+  
+## Algumas operações (command line via mongo)
+
+- ```show dbs```
+- ```use databaseName```
+- ```show collections```
+- ```db.colecaoNome.find()``` Exibe os documentos da coleção indicada.
+- ```db.colecaoNome.drop()``` Remove os documentos da coleção indicada.
+
 
 
