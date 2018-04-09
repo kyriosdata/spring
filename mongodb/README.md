@@ -41,7 +41,8 @@ exemplo ```{"id": 123, "nome":"fábio"}```.
 - Execute `mongo --host %mdb%`
 
 ### Azure Cosmos DB (importando arquivo JSON)
-- `mongoimport --host <host> --port <porta> --username <user> --password <password> /c <coleção> --ssl --sslAllowInvalidCertificates --file <arquivo.json>`
+- Você deve obter do Azure, Connection String, detalhes da sua conexão com o Cosmos DB para alimentar a chamada abaixo.
+- `mongoimport --host <h> --port <p> --username <u> --password <p> /c <c> --ssl --sslAllowInvalidCertificates --file <json>`
 
 
 
