@@ -36,5 +36,9 @@ exemplo ```{"id": 123, "nome":"fábio"}```.
 - ```db.colecaoNome.find()``` Exibe os documentos da coleção indicada.
 - ```db.colecaoNome.drop()``` Remove os documentos da coleção indicada.
 
+## Azure Cosmos DB (via linha de comandos)
+- Defina uma variável de ambiente, por exemplo, MDB para conter a sua PRIMARY CONNECTION STRING (do Azure CosmosDB).
+- Execute `mongo --host %mdb%`
+
 
 
