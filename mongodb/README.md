@@ -40,5 +40,8 @@ exemplo ```{"id": 123, "nome":"fábio"}```.
 - Defina uma variável de ambiente, por exemplo, MDB para conter a sua PRIMARY CONNECTION STRING (do Azure CosmosDB).
 - Execute `mongo --host %mdb%`
 
+### Azure Cosmos DB (importando arquivo JSON)
+- `mongoimport --host <host> --port <porta> --username <user> --password <password> /c <coleção> --ssl --sslAllowInvalidCertificates --file <arquivo.json>`
+
 
 
