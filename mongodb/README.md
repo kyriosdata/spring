@@ -42,7 +42,7 @@ exemplo ```{"id": 123, "nome":"fábio"}```.
 
 ### Azure Cosmos DB (importando arquivo JSON)
 - Você deve obter do Azure, Connection String, detalhes da sua conexão com o Cosmos DB para alimentar a chamada abaixo.
-- `mongoimport --host <h> --port <p> --username <u> --password <p> /c <c> --ssl --sslAllowInvalidCertificates --file <json>`
+- `mongoimport --host <h> --port <p> --username <u> --password <p> --db <database> --collection <c> --ssl --sslAllowInvalidCertificates --file <json>`
 
 
 
