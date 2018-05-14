@@ -14,8 +14,12 @@ import java.util.Map;
 @RestController
 public class H2ConsoleApplication {
 
+	private final JdbcTemplate template;
+
 	@Autowired
-	private JdbcTemplate template;
+	public H2ConsoleApplication(JdbcTemplate template) {
+		this.template = template;
+	}
 
 	@RequestMapping("/stocks")
 	public List<Map<String, Object>> stocks() {
