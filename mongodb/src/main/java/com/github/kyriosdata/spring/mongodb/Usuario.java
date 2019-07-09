@@ -12,6 +12,8 @@ package com.github.kyriosdata.spring.mongodb;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
+
 /**
  * Classe que representa um documento a ser armazenado.
  */
@@ -19,15 +21,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Usuario {
 
     @Id
-    private int id;
+    private BigInteger id;
 
     private String nome;
 
-    public int getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
