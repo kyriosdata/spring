@@ -37,7 +37,7 @@ public class SpringDataMongodbApplication implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         repo.deleteAll();
 
         Usuario u1 = new Usuario();
