@@ -16,6 +16,6 @@ public class MongoConfiguracao {
         System.out.println("--------------");
         System.out.println("MongoDB host: " + mongodbHost);
         System.out.println("--------------");
-        return new MongoClient("localhost");
+        return new MongoClient(mongodbHost);
     }
 }
