@@ -13,11 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 @RestController
@@ -27,14 +30,20 @@ public class SpringDataMongodbApplication implements CommandLineRunner {
     private UsuarioRepository repo;
 
     @RequestMapping("/users")
-    private List<Usuario> getUser() {
+    private List<Usuario> getUsers() {
         return repo.findAll();
+    }
+
+    @RequestMapping("/user/{id}")
+    private Usuario getUser(@PathVariable String id) {
+        System.out.println("VALOR DO ID: " + id);
+        Optional<Usuario> byId = repo.findById(new BigInteger(id));
+        return byId.isPresent() ? byId.get() : new Usuario();
     }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDataMongodbApplication.class, args);
     }
-
 
     @Override
     public void run(String... args) {
