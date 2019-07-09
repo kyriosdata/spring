@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @SpringBootApplication
@@ -37,6 +38,17 @@ public class SpringDataMongodbApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        repo.deleteAll();
 
+        Usuario u1 = new Usuario();
+        u1.setId(new BigInteger("1"));
+        u1.setNome("João");
+
+        Usuario u2 = new Usuario();
+        u2.setId(new BigInteger("2"));
+        u2.setNome("Pedro");
+
+        repo.save(u1);
+        repo.save(u2);
     }
 }
