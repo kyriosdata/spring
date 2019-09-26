@@ -7,6 +7,7 @@ import com.mongodb.ServerAddress;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Obtém valores do arquivo <em>application.properties</em>, em particular,
@@ -15,7 +16,8 @@ import org.springframework.context.annotation.Configuration;
  * programa (por exemplo, --mongodb.port=89) e variáveis de ambiente.
  */
 @Configuration
-public class MongoConfiguracao {
+@Profile("production")
+public class ProductionMongoConfiguration {
 
     @Value("${mongodb.host}")
     private String host;
