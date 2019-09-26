@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.util.Arrays;
+
 /**
  * Obtém valores do arquivo <em>application.properties</em>, em particular,
  * <em>mongodb.host</em>, <em>mongodb.port</em> e <em>mongodb.database</em>.
@@ -42,7 +44,6 @@ public class ProductionMongoConfiguration {
         MongoClientOptions options = MongoClientOptions.builder().build();
 
         ServerAddress address = new ServerAddress(host, port);
-        // return new MongoClient(address, Arrays.asList(credential), options);
-        return new MongoClient(address, options);
+        return new MongoClient(address, Arrays.asList(credential), options);
     }
 }
