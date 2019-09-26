@@ -36,11 +36,7 @@ public class SpringDataMongodbApplication implements CommandLineRunner {
     private Usuario getUser(@PathVariable String id) {
         System.out.println("VALOR DO ID: " + id);
         BigInteger theId = new BigInteger(id);
-        if (repo.existsById(theId)) {
-            return repo.findById(theId).get();
-        }
-
-        return new Usuario();
+        return repo.findById(theId).orElse(new Usuario());
     }
 
     public static void main(String[] args) {
