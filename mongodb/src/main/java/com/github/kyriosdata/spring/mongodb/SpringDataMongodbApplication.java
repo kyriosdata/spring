@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
 @RestController
@@ -36,8 +35,12 @@ public class SpringDataMongodbApplication implements CommandLineRunner {
     @RequestMapping("/user/{id}")
     private Usuario getUser(@PathVariable String id) {
         System.out.println("VALOR DO ID: " + id);
-        Optional<Usuario> byId = repo.findById(new BigInteger(id));
-        return byId.isPresent() ? byId.get() : new Usuario();
+        BigInteger theId = new BigInteger(id);
+        if (repo.existsById(theId)) {
+            return repo.findById(theId).get();
+        }
+
+        return new Usuario();
     }
 
     public static void main(String[] args) {
