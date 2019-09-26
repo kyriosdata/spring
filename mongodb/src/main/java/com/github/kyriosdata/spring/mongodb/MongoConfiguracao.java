@@ -8,6 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
+/**
+ * Obtém valores do arquivo <em>application.properties</em>, em particular,
+ * <em>mongodb.host</em>, <em>mongodb.port</em> e <em>mongodb.database</em>.
+ * Estas propriedades ainda podem ser fornecidas por meio de argumentos ao
+ * programa (por exemplo, --mongodb.port=89) e variáveis de ambiente.
+ */
 @Configuration
 public class MongoConfiguracao extends AbstractMongoConfiguration {
 
