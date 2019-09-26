@@ -2,11 +2,11 @@ package com.github.kyriosdata.spring.mongodb;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
 /**
  * Obtém valores do arquivo <em>application.properties</em>, em particular,
@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
  * programa (por exemplo, --mongodb.port=89) e variáveis de ambiente.
  */
 @Configuration
-public class MongoConfiguracao extends AbstractMongoConfiguration {
+public class MongoConfiguracao {
 
     @Value("${mongodb.host}")
     private String host;
@@ -26,20 +26,21 @@ public class MongoConfiguracao extends AbstractMongoConfiguration {
     @Value("${mongodb.database}")
     private String database;
 
+    @Value("${mongodb.username}")
+    private String username;
+
+    @Value("${mongodb.password}")
+    private char[] password;
+
     @Bean
     public MongoClient mongoClient() {
-        System.out.println("--------------");
-        System.out.println("MongoDB host: " + host + "/" + port);
-        System.out.println("--------------");
-        ServerAddress address = new ServerAddress(host, port);
-        MongoClientOptions.Builder builder = MongoClientOptions.builder();
-        builder.connectTimeout(1000);
-        MongoClient mc = new MongoClient(address, builder.build());
-        return mc;
-    }
+        MongoCredential credential = MongoCredential.createCredential(username,
+                database, password);
 
-    @Override
-    protected String getDatabaseName() {
-        return database;
+        MongoClientOptions options = MongoClientOptions.builder().build();
+
+        ServerAddress address = new ServerAddress(host, port);
+        // return new MongoClient(address, Arrays.asList(credential), options);
+        return new MongoClient(address, options);
     }
 }
