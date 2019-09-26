@@ -25,15 +25,6 @@ public class DevMongoConfiguration {
     @Value("${mongodb.port}")
     private int port;
 
-    @Value("${mongodb.database}")
-    private String database;
-
-    @Value("${mongodb.username}")
-    private String username;
-
-    @Value("${mongodb.password}")
-    private char[] password;
-
     @Bean
     public MongoClient mongoClient() {
         MongoClientOptions options = MongoClientOptions.builder().build();
