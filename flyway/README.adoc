@@ -1,43 +1,123 @@
-:compat-mode:
-= Flyway
+# Como documentar?
 
-== Introdução
-Ilustra uso combinado de Flyway, H2 e Spring.
+- https://dba.stackexchange.com/questions/515/how-do-you-document-your-databases
+- https://dataedo.com/kb/tools/mysql-workbench/documentation-generator-plugins
+- https://www.vertabelo.com/ -https://www.softwaretestinghelp.com/data-modeling-tools/
 
-== Importante
-Configure o driver do H2 a ser empregado pelo seu IDE usando a versão
-correta. O que isso significa? Significa usar a versão que também
-é empregada pelo Spring e pelo Flyway.
+# Iniciando com o H2
 
-O arquivo _pom.xml_ faz uso do **spring-boot-starter-parent** e,
-nesse caso, a versão utilizada é indicada pela propriedade
-_h2.version_. No Intellij basta clicar no pom com o botão direito,
-Maven e, por fim, Show Effective Pom. Isso mostrará a versão
-empregada pelo Spring Boot.
+- Configure o arquivo _pom.xml_ por meio de duas propriedades: **h2.version** e **h2.url**. A primeira com a versão do H2 a ser usada, enquanto a segunda com a URL de acesso ao
+  banco desejado, possivelmente algo como _jdbc:h2:tcp://192.168.0.104:9092/./db-teste_, por exemplo.
 
-A versão empregada pelo Flyway é especificada no próprio _pom.xml_ e,
-portanto, basta usar a propriedade _h2.version_ (conforme feito).
+- `mvn exec:exec -P start-h2` inicia o servidor (porta **9092**) e o cliente Web (porta **8082**) do H2, ambos acessíveis remotamente.
 
-Observe que essa também deve ser a versão empregada para iniciar
-o servidor, conforme a configuração do **exec-maven-plugin**.
+- `mvn exec:exec -P stop-h2` interrompe a execução do H2.
 
-== Iniciar o H2 (Server Mode)
-Basta executar **mvn exec:java***. No _pom.xml_ está indicada a versão
-a ser utilizada. Deve ser a mesma versão empregada tanto pelo 
-Flyway quanto pelo cliente SQL empregado.
+### H2 (server, cliente e driver JDBC)
 
-== Passos
+- `mvn package` deposita no diretório **target/jars**
+  os arquivos jar empregados pela solução, inclusive o arquivo
+  **h2-&lt;version&gt;.jar** que inclui a implementação do
+  [H2](http://www.h2database.com), o cliente Web e o _driver_ JDBC.
+  Observe que **version** é definida pela propriedade **h2.version**
+  no arquivo _pom.xml_.
 
-'''
-$ mvn clean package
-$ java -jar target/spring-flyway-1.0.0.jar
-'''
+O arquivo jar contendo o _driver_ JDBC é necessário para acesso
+ao H2 por meio de clientes SQL.
 
-== Migração (refatoração)
-O diretório `src/main/db/migration` contém várias versões **V1**, 
-**V2** e assim sucessivamente. 
+### H2 (iniciar o Server e cliente Web)
+
+Iniciado com permissão para criação remota e automática de _database_. Este recurso apresenta vulnerabilidades de segurança e, portanto, só deve ser feito tal uso em desenvolvimento.
+
+```
+mvn exec:exec -P start-h2
+```
+
+A versão do H2 a ser utilizada está definida no _pom.xml_ por meio da propriedade **h2.version**. As portas utilizadas são **9092** (tcp) e **8082** (web).
+
+### Usando o cliente para acesso a outros SGBDs
+
+Quando se inicia o H2, conforme ilustrado acima, será possível conectar a outros
+SGBDs. Para isto basta acrescentar a dependência para o _driver_ JDBC correspondente,
+no arquivo **pom.xml**, antes que seja iniciado o H2.
+
+### Interromper o H2 (Server e Web)
+
+```
+mvn exec:exec -P stop-h2
+```
+
+### Criar um _database_
+
+Antes de se conectar a uma base de dados será necessário criá-la. Conforme
+o _pom.xml_, o comando para iniciar o H2 está configurado para permitir a criação automática
+de um _database_, contudo, você pode desejar criar um explicitamente conforme abaixo:
+
+- `java -cp target/jars/h2-<version>.jar org.h2.tools.Shell`. Você terá que
+  fornecer como URL algo como `jdbc:h2:./teste` para criar no diretório
+  corrente o banco "teste". Se o acesso é remoto, então a url deverá ser algo como
+  `jdbc:h2:tcp://<ip>:9092/./db-usado`.
+
+### Conexão (URL)
+
+```
+jdbc:h2:tcp://localhost:9092/./target/database
+```
+
+### Flyway
+
+Defina a propriedade **h2.url** no arquivo _pom.xml_ para o _database_ a ser
+empregado pelo FlyWay.
+
+#### Migrações (informações)
+
+```
+mvn flyway:info
+```
+
+A configuração da URL também pode ser fornecida via linha de comandos conforme abaixo, onde remotamente é recuperada informações do banco `db1` cujo usuário é `sa`.
+
+```
+mvn flyway:info -Dh2.url="jdbc:h2:tcp://<ip>:9092/./db1;USER=sa"
+```
+
+#### Migrações (aplicar)
+
+```
+mvn flyway:migrate
+```
+
+Migrações configuradas, ou seja, os arquivos disponíveis em
+_resources/db/migration_ serão executados na ordem **V1\_\_**, **V2\_\_** e
+assim por diante.
+
+#### Limpar (sim, mas nunca em produção...)
+
+```
+mvn flyway:clean
+```
+
+#### Refatoração
+
+O diretório `src/main/db/migration` contém várias versões **V1**,
+**V2** e assim sucessivamente.
 
 Todas elas serão aplicadas, na ordem das versões, com o comando
-**mvn flyway:migrate**. Use o comando **mvnflyway:info** para obter
+**mvn flyway:migrate**. Use o comando **mvn flyway:info** para obter
 informações sobre o banco de dados em questão, o que deve indicar
 eventuais alterações pendentes, se for o caso.
+
+#### Fluxo típico
+
+Remover o **database.mv.db** (banco padrão usado pela aplicação). Executar o
+H2 via **mvn exec:jdbc** e só então a aplicação. A execução da aplicação pode ser
+feita via linha de comandos conforme ilustrado abaixo.
+
+```
+$ mvn exec:exec -P start-h2
+$ mvn flyway:info
+$ mvn flyway:migrate
+... Realiza algumas mudanças
+$ mvn flyway:clean
+$ mvn flyway:migrate
+```
