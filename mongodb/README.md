@@ -33,6 +33,8 @@ exemplo ```{"id": 123, "nome":"fábio"}```.
 - ```show dbs```
 - ```use databaseName```
 - ```show collections```
+- `db.createCollection("usuarios")`
+- `db.usuarios.insertOne({ "nome": "João" })`
 - ```db.colecaoNome.find()``` Exibe os documentos da coleção indicada.
 - ```db.colecaoNome.drop()``` Remove os documentos da coleção indicada.
 
