@@ -9,8 +9,8 @@
 
 package com.github.kyriosdata.spring.data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 /**
  * Informações sobre um usuário do sistema.
